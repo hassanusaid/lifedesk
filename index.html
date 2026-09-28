@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="theme-color" content="#2f8f5b"/>
+<title>LifeDesk — One place for everything</title>
+<style>
+:root{--bg:#f3faf6;--panel:#fff;--text:#173126;--muted:#6b8177;--line:#dcebe2;--accent:#2f8f5b;--accent-dark:#247448;--accent2:#e8f5ed;--danger:#dc2626;--warn:#d97706;--success:#198754;--shadow:0 10px 30px rgba(25,75,48,.08)}
+*{box-sizing:border-box}html,body{width:100%;height:100%;margin:0;overflow:hidden}body{font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:var(--bg);color:var(--text)}button,input,select,textarea{font:inherit}button{cursor:pointer;border:0}.app{display:flex;height:100dvh;min-height:0;overflow:hidden}.sidebar{width:250px;background:#fff;color:#294237;padding:22px 16px;position:fixed;inset:0 auto 0 0;border-right:1px solid var(--line)}.brand{font-weight:800;font-size:22px;letter-spacing:-.5px;padding:0 10px 22px;color:var(--accent-dark)}.brand small{display:block;color:#7a9186;font-size:11px;font-weight:500;margin-top:3px}.nav{display:grid;gap:5px}.nav button{background:transparent;color:#53685e;text-align:left;padding:11px 12px;border-radius:10px}.nav button:hover,.nav button.active{background:var(--accent2);color:var(--accent-dark)}.nav .count{float:right;background:#edf5f0;color:var(--accent-dark);border-radius:20px;padding:1px 7px;font-size:11px}.section-label{font-size:10px;text-transform:uppercase;letter-spacing:1.2px;color:#8aa095;margin:22px 10px 7px}.main{margin-left:250px;width:calc(100% - 250px);height:100dvh;overflow-y:auto;overflow-x:hidden;padding:28px 28px 110px;max-width:1450px;-webkit-overflow-scrolling:touch}.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}.title h1{margin:0;font-size:28px;letter-spacing:-.7px}.title p{margin:5px 0 0;color:var(--muted);font-size:14px}.actions{display:flex;gap:8px}.btn{padding:10px 14px;border-radius:10px;background:#fff;border:1px solid var(--line);color:var(--text);font-weight:650}.btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}.btn.danger{color:var(--danger)}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:18px}.stat{grid-column:span 3}.stat .num{font-size:28px;font-weight:800;margin-top:8px}.muted{color:var(--muted)}.label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.7px;font-weight:700}.task-list{display:grid;gap:9px;margin-top:12px}.task{display:flex;align-items:center;gap:12px;padding:12px;border:1px solid var(--line);border-radius:12px;background:#fff}.task.done{opacity:.55}.check{width:20px;height:20px;border:2px solid #cbd5e1;border-radius:6px;background:#fff;flex:none}.task.done .check{background:var(--success);border-color:var(--success);position:relative}.task.done .check:after{content:'✓';color:#fff;position:absolute;left:3px;top:-3px;font-size:15px}.task-main{flex:1;min-width:0}.task-title{font-weight:700}.task-meta{font-size:12px;color:var(--muted);margin-top:3px}.pill{display:inline-block;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:700;background:#f1f5f9;margin-right:4px}.pill.work{background:#eef2ff;color:#4338ca}.pill.personal{background:#ecfdf5;color:#047857}.pill.high{background:#fef2f2;color:#b91c1c}.pill.wait{background:#fff7ed;color:#c2410c}.due{font-size:11px;font-weight:700;color:var(--muted)}.due.overdue{color:var(--danger)}.due.today{color:var(--warn)}.two{grid-column:span 8}.four{grid-column:span 4}.six{grid-column:span 6}.full{grid-column:1/-1}.empty{text-align:center;padding:30px;color:var(--muted)}.category-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}.category{border:1px solid var(--line);border-radius:12px;padding:14px;background:#fff}.category strong{display:block}.modal-back{position:fixed;inset:0;background:rgba(15,23,42,.45);display:none;align-items:center;justify-content:center;padding:20px;z-index:20}.modal{background:#fff;width:min(620px,100%);border-radius:18px;padding:22px;box-shadow:0 30px 70px rgba(0,0,0,.2);max-height:90vh;overflow:auto}.modal h2{margin:0 0 18px}.form{display:grid;gap:13px}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field label{display:block;font-size:12px;font-weight:700;color:#4b5563;margin-bottom:5px}.field input,.field select,.field textarea{width:100%;border:1px solid #d9dee7;border-radius:10px;padding:10px 11px;background:#fff}.field textarea{min-height:90px;resize:vertical}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}.toast{position:fixed;right:22px;bottom:22px;background:#111827;color:#fff;padding:12px 16px;border-radius:10px;display:none;z-index:30}.search{width:280px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff}.table{width:100%;border-collapse:collapse}.table th,.table td{text-align:left;padding:12px;border-bottom:1px solid var(--line);font-size:13px}.table th{font-size:11px;text-transform:uppercase;color:var(--muted)}.fab{display:none}
+@media(max-width:900px){.sidebar{width:72px;padding:18px 9px}.brand{font-size:0;text-align:center}.brand:before{content:'L';font-size:22px}.brand small{display:none}.nav button{font-size:0;text-align:center}.nav button:first-letter{font-size:18px}.nav .count{display:none}.main{margin-left:72px;width:calc(100% - 72px);padding:18px}.stat{grid-column:span 6}.two,.four,.six{grid-column:1/-1}.category-grid{grid-template-columns:1fr 1fr}.search{width:180px}}
+@media(max-width:560px){.main{padding:14px}.topbar{align-items:flex-start;gap:10px}.title h1{font-size:23px}.actions .search{display:none}.stat{grid-column:span 6}.category-grid{grid-template-columns:1fr}.fab{display:block;position:fixed;right:18px;bottom:18px;width:56px;height:56px;border-radius:50%;background:var(--accent);color:#fff;font-size:26px;box-shadow:0 10px 25px rgba(79,70,229,.35);z-index:10}}
+
+.bottom-nav{position:fixed;left:0;right:0;bottom:0;height:76px;padding:8px 10px max(8px,env(safe-area-inset-bottom));background:rgba(255,255,255,.97);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid var(--line);display:flex;justify-content:space-around;align-items:center;z-index:50;box-shadow:0 -8px 24px rgba(31,76,52,.06)}
+html body .bottom-nav{position:fixed !important;left:0 !important;right:0 !important;bottom:0 !important;top:auto !important;display:flex !important;visibility:visible !important;opacity:1 !important;z-index:9999 !important;}
+.bottom-nav button{flex:1;max-width:180px;height:58px;border:0;background:transparent;border-radius:14px;color:#687d73;font-weight:750;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:12px}
+.bottom-nav button .nav-icon{font-size:23px;line-height:24px}.bottom-nav button.active{background:var(--accent2);color:var(--accent-dark)}
+.mobile-section-nav{display:none}
+@media(max-width:900px){body{overflow:hidden}.app{height:100dvh;min-height:0;overflow:hidden}.sidebar{display:none}.main{margin-left:0;width:100%;max-width:none;height:100dvh;overflow-y:auto;overflow-x:hidden;padding:18px 14px calc(112px + env(safe-area-inset-bottom))}.mobile-section-nav{display:flex;gap:8px;overflow-x:auto;padding:4px 0 14px;scrollbar-width:none}.mobile-section-nav::-webkit-scrollbar{display:none}.mobile-section-nav button{white-space:nowrap;border:1px solid var(--line);background:#fff;color:#52685e;padding:9px 14px;border-radius:999px;font-weight:700}.mobile-section-nav button.active{background:var(--accent2);color:var(--accent-dark);border-color:#b9ddc8}.topbar{margin-bottom:12px}.actions .btn.primary{display:none}.bottom-nav{height:78px}.fab{display:flex;position:fixed !important;right:18px;bottom:calc(88px + env(safe-area-inset-bottom));width:58px;height:58px;border-radius:50%;background:var(--accent);color:#fff;font-size:30px;box-shadow:0 12px 28px rgba(47,143,91,.34);z-index:60;align-items:center;justify-content:center}.search{width:100%}}
+
+.quick-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.quick-actions .btn{background:#fff}.section-head{display:flex;justify-content:space-between;align-items:center;gap:10px}.category.clickable{cursor:pointer;transition:.15s}.category.clickable:hover{border-color:#b9ddc8;background:#fbfffc;transform:translateY(-1px)}.date-group{margin-top:16px}.date-group:first-child{margin-top:0}.date-heading{font-size:12px;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);font-weight:800;margin:0 0 8px}.priority-dot{width:8px;height:8px;border-radius:50%;background:#94a3b8;display:inline-block;margin-right:5px}.priority-dot.high{background:#d97706}.priority-dot.critical{background:#dc2626}.priority-dot.low{background:#94a3b8}.task-actions{display:flex;align-items:center;gap:6px}.task-main{cursor:pointer}.mini-btn{padding:6px 8px;border:1px solid var(--line);background:#fff;border-radius:8px;color:var(--muted);font-weight:700}.modal-note{font-size:12px;color:var(--muted);background:var(--accent2);padding:10px 12px;border-radius:10px}
+
+@media(min-width:901px){.bottom-nav{display:none}.fab{display:none}}
+
+/* LifeDesk v8 visual + modal overrides */
+.modal-back{background:rgba(0,0,0,.62);padding:12px}
+.modal{display:flex;flex-direction:column;width:min(680px,100%);max-height:calc(100dvh - 24px);height:min(780px,calc(100dvh - 24px));overflow:hidden;padding:22px}
+.modal h2{flex:none}
+.modal .form{min-height:0;flex:1;overflow:auto;padding-right:3px}
+.modal-actions{flex:none;position:sticky;bottom:0;background:var(--panel);padding:12px 0 0;margin-top:10px;border-top:1px solid var(--line);z-index:2}
+.modal-actions .btn{min-height:44px}
+.backup-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.setting-card{border:1px solid var(--line);border-radius:14px;padding:16px;background:var(--panel)}
+.theme-preview{height:70px;border-radius:12px;background:#050806;border:1px solid #20362a;display:flex;align-items:center;gap:10px;padding:12px;color:#eaf7ef}
+.theme-preview i{width:10px;height:38px;border-radius:8px;background:#20a05d;display:block}
+.dark-theme{--bg:#050806;--panel:#0c130f;--text:#ecf8f0;--muted:#91a89a;--line:#20362a;--accent:#20a05d;--accent-dark:#42c978;--accent2:#0e2b1c;--danger:#ff6b6b;--warn:#f2b24b;--success:#28b86c;--shadow:0 10px 30px rgba(0,0,0,.32)}
+.dark-theme body,.dark-theme .main{background:var(--bg);color:var(--text)}
+.dark-theme .sidebar{background:#000;color:#dcece2;border-color:#18251d}
+.dark-theme .brand{color:#effff5}.dark-theme .brand small{color:#789283}
+.dark-theme .nav button{color:#9fb2a7}.dark-theme .nav button:hover,.dark-theme .nav button.active{background:#0e2b1c;color:#fff}
+.dark-theme .nav .count{background:#15261c;color:#9de0b7}
+.dark-theme .card,.dark-theme .category,.dark-theme .task,.dark-theme .btn,.dark-theme .modal,.dark-theme .field input,.dark-theme .field select,.dark-theme .field textarea,.dark-theme .search,.dark-theme .setting-card{background:var(--panel);color:var(--text);border-color:var(--line)}
+.dark-theme .task{background:#101a14}.dark-theme .field label{color:#b8cabe}
+.dark-theme .pill{background:#17271e;color:#bde8ce}.dark-theme .pill.work{background:#103521;color:#79dfa1}.dark-theme .pill.personal{background:#103521;color:#79dfa1}
+.dark-theme .pill.high{background:#3a1717;color:#ffaaaa}.dark-theme .pill.wait{background:#3a2a12;color:#ffd28b}
+.dark-theme .mini-btn{background:#101a14;color:#a7b9ae;border-color:var(--line)}
+.dark-theme .table th,.dark-theme .table td{border-color:var(--line)}
+.dark-theme .modal-actions{background:var(--panel);border-color:var(--line)}
+.dark-theme .bottom-nav{background:rgba(5,8,6,.97);border-color:#20362a}
+.dark-theme .bottom-nav button{color:#879d90}.dark-theme .bottom-nav button.active{background:#0e2b1c;color:#70d999}
+.dark-theme .mobile-section-nav button{background:#0c130f;color:#a6b8ad;border-color:#20362a}
+.dark-theme .mobile-section-nav button.active{background:#0e2b1c;color:#70d999;border-color:#285b3e}
+@media(max-width:560px){
+  .modal-back{padding:0}
+  .modal{width:100%;height:100dvh;max-height:100dvh;border-radius:18px 18px 0 0;padding:18px 16px}
+  .modal-actions{padding-bottom:max(8px,env(safe-area-inset-bottom))}
+}
+
+@media(max-width:560px){.two,.four,.six{grid-column:1/-1}.stat{grid-column:span 6}.stat .task-meta{font-size:10px}}
+</style></head>
+<body>
+<div class="app">
+<aside class="sidebar">
+<div class="brand">LifeDesk<small>One place for everything</small></div>
+<div class="nav" id="nav"></div>
+</aside>
+<main class="main">
+<div class="topbar"><div class="title"><h1 id="pageTitle">Today</h1><p id="pageSub">Everything that needs your attention.</p></div><div class="actions"><input id="search" class="search" placeholder="Search tasks, projects…"><button class="btn primary" onclick="openTask()">＋ Add</button></div></div>
+<div class="mobile-section-nav" id="mobileSectionNav"></div>
+<div id="content"></div>
+</main></div>
+<div class="bottom-nav" id="bottomNav"></div>
+<button class="fab" aria-label="Add task" onclick="openTask()">＋</button>
+<div class="modal-back" id="modalBack"><div class="modal" id="modal"></div></div><div class="toast" id="toast"></div>
+<script>
+const KEY='lifedesk_v1';
+const categories={Work:['Litigation','Audit','Licensing','Administration','Trade Promotion','Policy / HQ'],Personal:['Home','Groceries','Bills & Payments','Purchases','Vehicle','Family','Personal Admin','Finance']};
+let state=JSON.parse(localStorage.getItem(KEY)||'null')||{view:'home',tasks:[],projects:[],shopping:[],bills:[],theme:'light',lastBackup:null};state.theme=state.theme||'light';state.view='home';
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
+const save=()=>localStorage.setItem(KEY,JSON.stringify(state));
+const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+const fmt=d=>d?new Date(d+'T12:00:00').toLocaleDateString(undefined,{day:'numeric',month:'short',year:'numeric'}):'';
+const today=()=>new Date().toISOString().slice(0,10);
+function nav(){
+const bottom=[['home','⌂','Home'],['professional','💼','Professional'],['personal','♥','Personal']];
+const professionalViews=['professional','officeCategories','officeProjects','officeInbox','officeWaiting'];
+const personalViews=['personal','homeCategories','shopping','bills','homePurchases','homeInbox','homeWaiting'];
+const homeViews=['home','homeDashboard','homeCalendar','settings'];
+const activeRoot=professionalViews.includes(state.view)?'professional':personalViews.includes(state.view)?'personal':'home';
+const b=document.getElementById('bottomNav');
+if(b)b.innerHTML=bottom.map(([id,ic,n])=>`<button class="${activeRoot===id?'active':''}" onclick="setView('${id}')"><span class="nav-icon">${ic}</span><span>${n}</span></button>`).join('');
+let items=[];
+if(activeRoot==='professional')items=[['professional','▦','Overview'],['officeCategories','◫','Categories'],['officeProjects','▱','Projects / Matters'],['officeInbox','⌂','Inbox'],['officeWaiting','◷','Waiting']];
+else if(activeRoot==='personal')items=[['personal','▦','Overview'],['homeCategories','◫','Categories'],['shopping','🛒','Shopping'],['bills','💳','Bills & Payments'],['homePurchases','🛍️','Purchases'],['homeInbox','⌂','Inbox'],['homeWaiting','◷','Waiting']];
+else items=[['home','▦','Dashboard'],['homeCalendar','📅','Calendar'],['settings','⚙️','Settings']];
+const html=items.map(([id,ic,n])=>`<button class="${state.view===id?'active':''}" onclick="setView('${id}')">${ic} ${n}</button>`).join('');
+document.getElementById('nav').innerHTML=html;
+const m=document.getElementById('mobileSectionNav');
+if(m)m.innerHTML=items.map(([id,ic,n])=>`<button class="${state.view===id?'active':''}" onclick="setView('${id}')">${ic} ${n}</button>`).join('');
+}
+function count(id){if(id==='professional')return state.tasks.filter(t=>t.workspace==='Work'&&!t.done).length;if(id==='personal')return state.tasks.filter(t=>t.workspace==='Personal'&&!t.done).length;if(id==='home')return state.tasks.filter(t=>!t.done).length;return ''}
+function setView(v){state.view=v;save();render()}
+function render(){
+nav();
+const aliases={professional:'work',officeCategories:'workCategories',officeProjects:'projects',officeInbox:'inboxWork',officeWaiting:'waitingWork',homeCategories:'personalCategories',homeInbox:'inboxPersonal',homeWaiting:'waitingPersonal',homePurchases:'purchases',homeCalendar:'calendar'};
+const v=aliases[state.view]||state.view;
+const titles={home:['LifeDesk','Your consolidated dashboard and calendar.'],work:['Professional','Office work, files, follow-ups and professional responsibilities.'],workCategories:['Professional · Categories','Organise professional work by type.'],personal:['Personal','Home, family, passions and personal responsibilities.'],personalCategories:['Personal · Categories','Organise personal responsibilities.'],projects:['Projects / Matters','Professional matters and projects.'],calendar:['Calendar','All professional and personal deadlines in one place.'],inboxWork:['Professional · Inbox','Capture professional work first. Organise later.'],inboxPersonal:['Personal · Inbox','Capture personal tasks first. Organise later.'],waitingWork:['Professional · Waiting','Professional items waiting for someone else.'],waitingPersonal:['Personal · Waiting','Personal items waiting for someone else.'],shopping:['Shopping','Groceries, household and planned purchases.'],bills:['Bills & Payments','Recurring payments and due dates.'],purchases:['Purchases','Things you plan to buy.'],settings:['Settings','Manage LifeDesk data and appearance.']};
+const t=titles[v]||titles.home;document.getElementById('pageTitle').textContent=t[0];document.getElementById('pageSub').textContent=t[1];
+if(v==='home')document.getElementById('content').innerHTML=homeDashboard();
+else if(v==='workCategories')document.getElementById('content').innerHTML=categoryPage('Work');
+else if(v==='personalCategories')document.getElementById('content').innerHTML=categoryPage('Personal');
+else if(v==='inboxWork')document.getElementById('content').innerHTML=inboxPage('Work');
+else if(v==='inboxPersonal')document.getElementById('content').innerHTML=inboxPage('Personal');
+else if(v==='waitingWork')document.getElementById('content').innerHTML=waitingPage('Work');
+else if(v==='waitingPersonal')document.getElementById('content').innerHTML=waitingPage('Personal');
+else if(v==='settings')document.getElementById('content').innerHTML=settingsPage();
+else document.getElementById('content').innerHTML=pages[v]?pages[v]() : '';
+}
+function homeDashboard(){
+  const open=state.tasks.filter(t=>!t.done), overdue=open.filter(t=>t.due&&t.due<today()), due=open.filter(t=>t.due===today()), waiting=open.filter(t=>t.status==='Waiting');
+  const professional=open.filter(t=>t.workspace==='Work'), personal=open.filter(t=>t.workspace==='Personal');
+  const upcoming=open.filter(t=>t.due&&t.due>today()).sort((a,b)=>a.due.localeCompare(b.due)).slice(0,8);
+  const scheduled=open.filter(t=>t.due).sort((a,b)=>a.due.localeCompare(b.due)).slice(0,10);
+  return `<div class="grid">
+    <div class="card stat"><div class="label">Total pending</div><div class="num">${open.length}</div><div class="task-meta">${professional.length} professional · ${personal.length} personal</div></div>
+    <div class="card stat"><div class="label">Due today</div><div class="num">${due.length}</div></div>
+    <div class="card stat"><div class="label">Overdue</div><div class="num" style="color:${overdue.length?'var(--danger)':'inherit'}">${overdue.length}</div></div>
+    <div class="card stat"><div class="label">Waiting</div><div class="num" style="color:${waiting.length?'var(--warn)':'inherit'}">${waiting.length}</div></div>
+    <div class="two">${list('⭐ Due today',due)}</div><div class="four">${list('🔴 Overdue',overdue)}</div>
+    <div class="six">${list('📌 Upcoming',upcoming)}</div>
+    <div class="six card"><div class="section-head"><strong>📅 Calendar</strong><button class="btn" onclick="setView('homeCalendar')">Open calendar</button></div><div class="task-list">${scheduled.length?scheduled.map(taskHTML).join(''):'<div class="empty">No scheduled items.</div>'}</div></div>
+    <div class="six card"><div class="section-head"><strong>💼 Professional</strong><button class="btn" onclick="setView('professional')">Open</button></div><div class="task-meta">${professional.length} pending · ${professional.filter(t=>t.due===today()).length} due today · ${professional.filter(t=>t.status==='Waiting').length} waiting</div></div>
+    <div class="six card"><div class="section-head"><strong>♥ Personal</strong><button class="btn" onclick="setView('personal')">Open</button></div><div class="task-meta">${personal.length} pending · ${personal.filter(t=>t.due===today()).length} due today · ${personal.filter(t=>t.status==='Waiting').length} waiting</div></div>
+  </div>`;
+}
+function overviewPage(w){
+  const ts=state.tasks.filter(t=>t.workspace===w&&!t.done);
+  const overdue=ts.filter(t=>t.due&&t.due<today());
+  const waiting=ts.filter(t=>t.status==='Waiting');
+  const due=ts.filter(t=>t.due===today());
+  const cats=categories[w];
+  return `<div class="grid">
+    <div class="card stat"><div class="label">Open tasks</div><div class="num">${ts.length}</div></div>
+    <div class="card stat"><div class="label">Overdue</div><div class="num" style="color:${overdue.length?'var(--danger)':'inherit'}">${overdue.length}</div></div>
+    <div class="card stat"><div class="label">Waiting</div><div class="num" style="color:${waiting.length?'var(--warn)':'inherit'}">${waiting.length}</div></div>
+    <div class="card stat"><div class="label">Due today</div><div class="num">${due.length}</div></div>
+    <div class="card full"><div class="section-head"><strong>${w==='Work'?'Professional':'Personal'} categories</strong><button class="btn" onclick="setView('${w==='Work'?'officeCategories':'homeCategories'}')">View all</button></div><div class="category-grid">${cats.map(c=>`<div class="category clickable" onclick="filterCategory('${w}','${c.replace(/'/g,"\\'")}')"><strong>${esc(c)}</strong><span class="muted">${state.tasks.filter(t=>t.workspace===w&&t.category===c&&!t.done).length} open</span></div>`).join('')}</div></div>
+    ${list(`${w==='Work'?'Professional':'Personal'} tasks`,ts.slice().sort((a,b)=>(a.due||'9999').localeCompare(b.due||'9999')).slice(0,10))}
+  </div>`;
+}
+function projectsPage(){
+  return `<div class="grid"><div class="full card"><div class="section-head"><strong>Projects / Matters</strong><button class="btn primary" onclick="openProject()">＋ New project</button></div><div class="task-list">${state.projects.length?state.projects.map(p=>`<div class="task" onclick="projectDetail('${p.id}')"><div style="font-size:22px">📁</div><div class="task-main"><div class="task-title">${esc(p.name)}</div><div class="task-meta"><span class="pill ${p.workspace.toLowerCase()}" >${esc(p.workspace)}</span> ${esc(p.category||'General')}</div></div><div class="due">${state.tasks.filter(t=>t.projectId===p.id&&!t.done).length} open</div></div>`).join(''):'<div class="empty">No projects or matters yet. Create one to group related tasks.</div>'}</div></div></div>`;
+}
+function shoppingPage(){
+  const open=state.shopping.filter(x=>!x.done), done=state.shopping.filter(x=>x.done);
+  return `<div class="grid"><div class="full card"><div class="section-head"><strong>Shopping list</strong><button class="btn primary" onclick="addShop()">＋ Add item</button></div><div class="task-list">${open.length?open.map((x,i)=>{const idx=state.shopping.indexOf(x);return `<div class="task"><button class="check" onclick="toggleShop(${idx})"></button><div class="task-main"><div class="task-title">${esc(x.name)}</div><div class="task-meta">${esc(x.list)} · Qty ${esc(x.qty)}</div></div></div>`}).join(''):'<div class="empty">Your shopping list is empty.</div>'}</div>${done.length?`<div class="section-label">Completed</div><div class="task-list">${done.map(x=>`<div class="task done"><button class="check"></button><div class="task-main"><div class="task-title">${esc(x.name)}</div><div class="task-meta">${esc(x.list)} · Qty ${esc(x.qty)}</div></div></div>`).join('')}</div>`:''}</div></div>`;
+}
+function billsPage(){
+  return `<div class="grid"><div class="full card"><div class="section-head"><strong>Bills & Payments</strong><button class="btn primary" onclick="addBill()">＋ Add bill</button></div><div class="task-list">${state.bills.length?state.bills.map((b,i)=>`<div class="task ${b.paid?'done':''}"><button class="check" onclick="state.bills[${i}].paid=!state.bills[${i}].paid;save();render()"></button><div class="task-main"><div class="task-title">${esc(b.name)}</div><div class="task-meta">${b.amount?'₹'+esc(b.amount)+' · ':''}${esc(b.repeat||'One-time')}</div></div><div class="due ${b.due&&b.due<today()&&!b.paid?'overdue':''}">${fmt(b.due)}</div></div>`).join(''):'<div class="empty">No bills added yet.</div>'}</div></div></div>`;
+}
+function purchasesPage(){
+  const ts=state.tasks.filter(t=>t.workspace==='Personal'&&t.category==='Purchases'&&!t.done);
+  return `<div class="grid"><div class="full card"><div class="section-head"><strong>Purchases</strong><button class="btn primary" onclick="openTask()">＋ Add purchase</button></div>${list('Planned purchases',ts)}</div></div>`;
+}
+function filterCategory(w,c){
+  const ts=state.tasks.filter(t=>t.workspace===w&&t.category===c&&!t.done);
+  document.getElementById('pageTitle').textContent=c;
+  document.getElementById('pageSub').textContent=`${w==='Work'?'Office':'Home'} · ${ts.length} open task${ts.length===1?'':'s'}`;
+  document.getElementById('content').innerHTML=list(c,ts);
+}
+const pages={
+  today:()=>{
+    const due=state.tasks.filter(t=>!t.done&&t.due===today()), overdue=state.tasks.filter(t=>!t.done&&t.due&&t.due<today()), upcoming=state.tasks.filter(t=>!t.done&&t.due&&t.due>today()).sort((a,b)=>a.due.localeCompare(b.due)).slice(0,12), waiting=state.tasks.filter(t=>!t.done&&t.status==='Waiting');
+    return `<div class="grid">${list('Due today',due)}${list('Overdue',overdue)}${list('Upcoming',upcoming)}${list('Waiting for others',waiting)}</div>`;
+  },
+  work:()=>overviewPage('Work'),
+  personal:()=>overviewPage('Personal'),
+  projects:projectsPage,
+  calendar:()=>{
+    const ts=state.tasks.filter(t=>!t.done&&t.due).sort((a,b)=>a.due.localeCompare(b.due));
+    if(!ts.length)return '<div class="card empty">No scheduled items.</div>';
+    const groups={};ts.forEach(t=>(groups[t.due]??=[]).push(t));
+    return `<div class="card">${Object.entries(groups).map(([d,items])=>`<div class="date-group"><div class="date-heading">${fmt(d)}</div><div class="task-list">${items.map(taskHTML).join('')}</div></div>`).join('')}</div>`;
+  },
+  shopping:shoppingPage,
+  bills:billsPage,
+  purchases:purchasesPage
+};
+
+function categoryPage(w){return `<div class="grid"><div class="full card"><div class="section-head"><strong>${w==='Work'?'Office':'Home'} categories</strong><span class="muted">Tap a category to see open tasks</span></div><div class="category-grid">${categories[w].map(c=>`<div class="category clickable" onclick="filterCategory('${w}','${c.replace(/'/g,"\\'")}')"><strong>${c}</strong><span class="muted">${state.tasks.filter(t=>t.workspace===w&&t.category===c&&!t.done).length} open</span></div>`).join('')}</div></div></div>`}
+function inboxPage(w){const ts=state.tasks.filter(t=>t.workspace===w&&!t.category&&!t.done);return list(`${w==='Work'?'Office':'Home'} inbox`,ts)}
+function waitingPage(w){const ts=state.tasks.filter(t=>t.workspace===w&&t.status==='Waiting'&&!t.done);return list(`${w==='Work'?'Office':'Home'} · Waiting for others`,ts)}
+function calendarPage(w){const ts=state.tasks.filter(t=>t.workspace===w&&t.due&&!t.done).sort((a,b)=>a.due.localeCompare(b.due));if(!ts.length)return '<div class="card empty">No scheduled items.</div>';const groups={};ts.forEach(t=>(groups[t.due]??=[]).push(t));return `<div class="card">${Object.entries(groups).map(([d,items])=>`<div class="date-group"><div class="date-heading">${fmt(d)}</div><div class="task-list">${items.map(taskHTML).join('')}</div></div>`).join('')}</div>`}
+function taskHTML(t){const due=t.due?(t.due<today()&&!t.done?'overdue':t.due===today()&&!t.done?'today':''):'';const project=state.projects.find(p=>p.id===t.projectId);const priority=(t.priority||'Normal').toLowerCase();return `<div class="task ${t.done?'done':''}"><button class="check" onclick="toggleTask('${t.id}')"></button><div class="task-main" onclick="editTask('${t.id}')"><div class="task-title"><span class="priority-dot ${priority}"></span>${esc(t.title)}</div><div class="task-meta"><span class="pill ${t.workspace.toLowerCase()}">${esc(t.workspace)}</span>${t.category?`<span class="pill">${esc(t.category)}</span>`:''}${t.status==='Waiting'?'<span class="pill wait">Waiting</span>':''}${project?`<span class="pill">📁 ${esc(project.name)}</span>`:''}${t.repeat&&t.repeat!=='None'?`<span class="pill">↻ ${esc(t.repeat)}</span>`:''}</div></div>${t.due?`<div class="due ${due}">${due==='overdue'?'Overdue · ':''}${fmt(t.due)}</div>`:''}<div class="task-actions"><button class="mini-btn" onclick="editTask('${t.id}');event.stopPropagation()">Edit</button><button class="mini-btn" onclick="deleteTask('${t.id}');event.stopPropagation()">×</button></div></div>`}
+function list(title,arr){return `<div class="card"><div class="section-head"><strong>${title}</strong><span class="muted">${arr.length}</span></div><div class="task-list">${arr.length?arr.map(taskHTML).join(''):'<div class="empty">Nothing here.</div>'}</div></div>`}
+function openTask(id){let t=id?state.tasks.find(x=>x.id===id):null;const current=state.view;const w=t?.workspace||(['personal','homeCategories','shopping','bills','homePurchases','homeInbox','homeWaiting'].includes(current)?'Personal':'Work');const reminder=t?.reminder||'';document.getElementById('modal').innerHTML=`<h2>${t?'Edit task':'New task'}</h2><form class="form" onsubmit="submitTask(event,'${id||''}')"><div class="field"><label>Task</label><input name="title" required value="${esc(t?.title||'')}" placeholder="What needs to be done?"></div><div class="row"><div class="field"><label>Workspace</label><select name="workspace" onchange="updateCats(this.value)"><option ${w==='Work'?'selected':''}>Work</option><option ${w==='Personal'?'selected':''}>Personal</option></select></div><div class="field"><label>Category</label><select id="cat" name="category"><option value="">Inbox / Uncategorised</option>${categories[w].map(c=>`<option ${t?.category===c?'selected':''}>${c}</option>`).join('')}</select></div></div><div class="row"><div class="field"><label>Due date</label><input type="date" name="due" value="${t?.due||''}"></div><div class="field"><label>Reminder time</label><input type="time" name="reminder" value="${esc(reminder)}"></div></div><div class="row"><div class="field"><label>Priority</label><select name="priority"><option ${!t||t?.priority==='Normal'?'selected':''}>Normal</option><option ${t?.priority==='High'?'selected':''}>High</option><option ${t?.priority==='Critical'?'selected':''}>Critical</option><option ${t?.priority==='Low'?'selected':''}>Low</option></select></div><div class="field"><label>Status</label><select name="status"><option ${!t||t?.status==='Not started'?'selected':''}>Not started</option><option ${t?.status==='In progress'?'selected':''}>In progress</option><option ${t?.status==='Waiting'?'selected':''}>Waiting</option></select></div></div><div class="row"><div class="field"><label>Repeat</label><select name="repeat"><option ${!t||t?.repeat==='None'?'selected':''}>None</option><option ${t?.repeat==='Daily'?'selected':''}>Daily</option><option ${t?.repeat==='Weekly'?'selected':''}>Weekly</option><option ${t?.repeat==='Monthly'?'selected':''}>Monthly</option><option ${t?.repeat==='Yearly'?'selected':''}>Yearly</option></select></div><div class="field"><label>Assign to</label><select name="assignee"><option ${!t||t?.assignee==='Me'?'selected':''}>Me</option><option ${t?.assignee==='Wife'?'selected':''}>Wife</option><option ${t?.assignee==='Both'?'selected':''}>Both</option></select></div></div><div class="field"><label>Project / Matter (optional)</label><select name="projectId"><option value="">None</option>${state.projects.map(p=>`<option value="${p.id}" ${t?.projectId===p.id?'selected':''}>${esc(p.name)}</option>`).join('')}</select></div><div class="field"><label>Notes</label><textarea name="notes" placeholder="Add context, reference numbers, links or follow-up details…">${esc(t?.notes||'')}</textarea></div><div class="modal-note">Tip: Set status to <strong>Waiting</strong> when you're waiting for HQ, a colleague, exporter, counsel or another person. It will appear in the Waiting section.</div><div class="modal-actions"><button type="button" class="btn" onclick="closeModal()">Cancel</button><button class="btn primary">Save task</button></div></form>`;showModal()}
+function updateCats(w){const s=document.getElementById('cat');s.innerHTML='<option value="">Inbox / Uncategorised</option>'+categories[w].map(c=>`<option>${c}</option>`).join('')}
+function submitTask(e,id){e.preventDefault();const f=new FormData(e.target);const existing=id?state.tasks.find(t=>t.id===id):null;const obj={id:id||uid(),title:f.get('title').trim(),workspace:f.get('workspace'),category:f.get('category'),due:f.get('due'),reminder:f.get('reminder'),priority:f.get('priority'),status:f.get('status'),repeat:f.get('repeat'),assignee:f.get('assignee'),projectId:f.get('projectId'),notes:f.get('notes'),done:existing?existing.done:false,createdAt:existing?.createdAt||new Date().toISOString()};if(id)Object.assign(existing,obj);else state.tasks.push(obj);save();closeModal();toast(id?'Task updated':'Task created');render();scheduleNotifications()}
+function toggleTask(id){const t=state.tasks.find(x=>x.id===id);if(!t)return;t.done=!t.done;if(t.done&&t.repeat&&t.repeat!=='None'&&t.due){let d=new Date(t.due+'T12:00:00');if(t.repeat==='Daily')d.setDate(d.getDate()+1);if(t.repeat==='Weekly')d.setDate(d.getDate()+7);if(t.repeat==='Monthly')d.setMonth(d.getMonth()+1);if(t.repeat==='Yearly')d.setFullYear(d.getFullYear()+1);state.tasks.push({...t,id:uid(),done:false,due:d.toISOString().slice(0,10),status:'Not started',createdAt:new Date().toISOString()});}save();render()}
+function deleteTask(id){if(confirm('Delete this task?')){state.tasks=state.tasks.filter(t=>t.id!==id);save();render()}}
+function editTask(id){openTask(id)}
+function openProject(){document.getElementById('modal').innerHTML=`<h2>New project / matter</h2><form class="form" onsubmit="submitProject(event)"><div class="field"><label>Name</label><input name="name" required placeholder="e.g. Nitta Gelatin WP(C) 26881/2026"></div><div class="row"><div class="field"><label>Workspace</label><select name="workspace"><option>Work</option></select></div><div class="field"><label>Category</label><input name="category" placeholder="Litigation / Home / etc."></div></div><div class="field"><label>Description</label><textarea name="desc"></textarea></div><div class="modal-actions"><button type="button" class="btn" onclick="closeModal()">Cancel</button><button class="btn primary">Create</button></div></form>`;showModal()}
+function submitProject(e){e.preventDefault();const f=new FormData(e.target);const name=String(f.get('name')||'').trim();if(!name){alert('Please enter a project or matter name.');return}state.projects.push({id:uid(),name,workspace:f.get('workspace'),category:String(f.get('category')||'').trim(),desc:String(f.get('desc')||'').trim(),createdAt:new Date().toISOString()});save();closeModal();toast('Project created');render()}
+function projectDetail(id){const p=state.projects.find(x=>x.id===id);if(!p){toast('Project not found');return}const ts=state.tasks.filter(t=>t.projectId===id);document.getElementById('modal').innerHTML=`<h2>📁 ${esc(p.name)}</h2><p><span class="pill ${p.workspace.toLowerCase()}">${p.workspace}</span> <span class="pill">${esc(p.category||'General')}</span></p><p class="muted">${esc(p.desc||'No description')}</p>${list('Tasks',ts)}<div class="modal-actions"><button class="btn" onclick="closeModal()">Close</button><button class="btn primary" onclick="closeModal();openTaskForProject('${id}')">＋ Add task</button></div>`;showModal()}
+function openTaskForProject(projectId){openTask();setTimeout(()=>{const p=state.projects.find(x=>x.id===projectId);const sel=document.querySelector('#modal select[name=projectId]');if(p&&sel)sel.value=p.id},30)}
+function addShop(){document.getElementById('modal').innerHTML=`<h2>Add shopping item</h2><form class="form" onsubmit="submitShop(event)"><div class="field"><label>Item</label><input name="name" required placeholder="Milk, detergent, vegetables…"></div><div class="row"><div class="field"><label>Quantity</label><input name="qty" placeholder="1"></div><div class="field"><label>List</label><select name="list"><option>Groceries</option><option>Household</option><option>Online</option><option>Other</option></select></div></div><div class="modal-actions"><button type="button" class="btn" onclick="closeModal()">Cancel</button><button class="btn primary">Add item</button></div></form>`;showModal()}
+function submitShop(e){e.preventDefault();const f=new FormData(e.target);state.shopping.push({id:uid(),name:f.get('name').trim(),qty:f.get('qty')||'1',list:f.get('list'),done:false});save();closeModal();toast('Shopping item added');render()}
+function toggleShop(i){state.shopping[i].done=!state.shopping[i].done;save();render()}
+function addBill(){document.getElementById('modal').innerHTML=`<h2>Add bill</h2><form class="form" onsubmit="submitBill(event)"><div class="field"><label>Bill name</label><input name="name" required placeholder="Electricity"></div><div class="row"><div class="field"><label>Amount</label><input name="amount" type="number" step="0.01"></div><div class="field"><label>Due date</label><input name="due" type="date" required></div></div><div class="field"><label>Repeat</label><select name="repeat"><option>One-time</option><option>Monthly</option><option>Yearly</option></select></div><div class="modal-actions"><button type="button" class="btn" onclick="closeModal()">Cancel</button><button class="btn primary">Save</button></div></form>`;showModal()}
+function submitBill(e){e.preventDefault();const f=new FormData(e.target);state.bills.push({name:f.get('name'),amount:f.get('amount'),due:f.get('due'),repeat:f.get('repeat'),paid:false});save();closeModal();toast('Bill added');render()}
+
+function settingsPage(){
+  const last=state.lastBackup?new Date(state.lastBackup).toLocaleString():'No backup created yet';
+  return `<div class="grid">
+    <div class="full card">
+      <div class="section-head"><strong>💾 Backup & Restore</strong><span class="muted">Protect your LifeDesk data</span></div>
+      <p class="muted" style="margin:8px 0 0">Create a complete backup file and save it in the iPhone Files app. You can restore it after reinstalling LifeDesk.</p>
+      <div class="backup-row">
+        <button class="btn primary" onclick="backupLifeDesk()">⬇ Backup LifeDesk</button>
+        <button class="btn" onclick="document.getElementById('restoreLifeDeskFile').click()">♻ Restore LifeDesk</button>
+        <input id="restoreLifeDeskFile" type="file" accept=".lifedesk,.json,application/json" style="display:none" onchange="restoreLifeDesk(event)">
+      </div>
+      <div class="setting-card" style="margin-top:14px">
+        <div class="label">Last backup</div>
+        <div style="margin-top:5px;font-weight:700">${esc(last)}</div>
+      </div>
+    </div>
+    <div class="six card">
+      <strong>🎨 Theme</strong>
+      <p class="muted">Use a black and green interface instead of night mode.</p>
+      <div class="theme-preview"><i></i><span>Black + Green</span></div>
+      <div class="backup-row">
+        <button class="btn" onclick="setTheme('light')">Light theme</button>
+        <button class="btn primary" onclick="setTheme('dark')">Dark theme</button>
+      </div>
+    </div>
+    <div class="six card">
+      <strong>📦 Local data</strong>
+      <p class="muted">LifeDesk currently stores data on this device. Backup regularly if the information is important.</p>
+      <div class="task-meta">${state.tasks.length} tasks · ${state.projects.length} projects · ${state.shopping.length} shopping items · ${state.bills.length} bills</div>
+    </div>
+  </div>`;
+}
+
+async function backupLifeDesk(){
+  try{
+    const backup={
+      format:'LifeDesk Backup',
+      version:1,
+      createdAt:new Date().toISOString(),
+      data:{
+        tasks:state.tasks||[],
+        projects:state.projects||[],
+        shopping:state.shopping||[],
+        bills:state.bills||[],
+        view:state.view||'today',
+        theme:state.theme||'light'
+      }
+    };
+    const stamp=new Date().toISOString().slice(0,10);
+    const filename=`LifeDesk Backup - ${stamp}.lifedesk`;
+    const blob=new Blob([JSON.stringify(backup,null,2)],{type:'application/octet-stream'});
+    const file=new File([blob],filename,{type:'application/octet-stream'});
+    const shareReady=navigator.share && navigator.canShare && navigator.canShare({files:[file]});
+    if(shareReady){
+      await navigator.share({title:'LifeDesk Backup',text:'LifeDesk backup file',files:[file]});
+    }else{
+      const url=URL.createObjectURL(blob);
+      const a=document.createElement('a');
+      a.href=url;a.download=filename;
+      document.body.appendChild(a);a.click();a.remove();
+      setTimeout(()=>URL.revokeObjectURL(url),1000);
+    }
+    state.lastBackup=backup.createdAt;
+    save();render();toast('Backup created');
+  }catch(err){
+    console.error(err);
+    alert('LifeDesk could not create the backup.');
+  }
+}
+
+function restoreLifeDesk(event){
+  const file=event.target.files&&event.target.files[0];
+  if(!file)return;
+  const reader=new FileReader();
+  reader.onload=()=>{
+    try{
+      const backup=JSON.parse(reader.result);
+      if(backup?.format!=='LifeDesk Backup'||!backup?.data)throw new Error('Invalid backup');
+      const d=backup.data;
+      const tasks=Array.isArray(d.tasks)?d.tasks:[];
+      const projects=Array.isArray(d.projects)?d.projects:[];
+      const shopping=Array.isArray(d.shopping)?d.shopping:[];
+      const bills=Array.isArray(d.bills)?d.bills:[];
+      const ok=confirm(`Restore this LifeDesk backup?\n\n${tasks.length} tasks\n${projects.length} projects / matters\n${shopping.length} shopping items\n${bills.length} bills\n\nYour current local data will be replaced.`);
+      if(!ok)return;
+      state={
+        view:'home',
+        tasks:tasks,
+        projects:projects,
+        shopping:shopping,
+        bills:bills,
+        theme:d.theme||'light',
+        lastBackup:backup.createdAt||new Date().toISOString()
+      };
+      save();
+      applyTheme();
+      render();
+      toast('LifeDesk restored successfully');
+    }catch(err){
+      console.error(err);
+      alert('This is not a valid LifeDesk backup file. Your current data was not changed.');
+    }finally{
+      event.target.value='';
+    }
+  };
+  reader.readAsText(file);
+}
+
+function setTheme(theme){
+  state.theme=theme;
+  save();
+  applyTheme();
+  render();
+}
+
+function applyTheme(){
+  document.documentElement.classList.toggle('dark-theme',state.theme==='dark');
+  const meta=document.querySelector('meta[name="theme-color"]');
+  if(meta)meta.setAttribute('content',state.theme==='dark'?'#050806':'#2f8f5b');
+}
+
+function showModal(){document.getElementById('modalBack').style.display='flex'}function closeModal(){document.getElementById('modalBack').style.display='none'}
+function toast(s){const x=document.getElementById('toast');x.textContent=s;x.style.display='block';setTimeout(()=>x.style.display='none',1800)}
+document.getElementById('search').addEventListener('input',e=>{const q=e.target.value.trim().toLowerCase();if(!q){render();return}const ts=state.tasks.filter(t=>JSON.stringify(t).toLowerCase().includes(q));const ps=state.projects.filter(p=>JSON.stringify(p).toLowerCase().includes(q));document.getElementById('content').innerHTML=list(`Search results for “${esc(e.target.value)}”`,ts)+(ps.length?`<div class="card" style="margin-top:16px"><div class="section-head"><strong>Matching projects / matters</strong><span class="muted">${ps.length}</span></div><div class="task-list">${ps.map(p=>`<div class="task" onclick="projectDetail('${p.id}')"><div style="font-size:22px">📁</div><div class="task-main"><div class="task-title">${esc(p.name)}</div><div class="task-meta">${esc(p.workspace)} · ${esc(p.category||'General')}</div></div></div>`).join('')}</div></div>`:'')});
+function scheduleNotifications(){if(!('Notification'in window)||Notification.permission!=='granted')return;state.tasks.filter(t=>!t.done&&t.due===today()).forEach(t=>{const k='notified_'+t.id+'_'+today();if(!localStorage.getItem(k)){new Notification('LifeDesk · Due today',{body:t.title});localStorage.setItem(k,'1')}})}
+if('Notification'in window&&Notification.permission==='default'){setTimeout(()=>Notification.requestPermission(),1200)}
+applyTheme();render();scheduleNotifications();setInterval(scheduleNotifications,60000);
+</script></body></html>
